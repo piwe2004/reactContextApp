@@ -1,14 +1,20 @@
-import './App.css';
-import SummaryPage from './pages/SummaryPage';
-import OrderPage from './pages/OrderPage/index';
+import "./App.css";
+import SummaryPage from "./pages/SummaryPage";
+import OrderPage from "./pages/OrderPage/index";
+import { useState } from "react";
+import CompletePage from './pages/CompletePage/index';
 
 function App() {
-  return (
-    <div style={{padding:"4rem"}}>
-      <OrderPage />
-      <SummaryPage />
-    </div>
-  );
+
+	const [step, setStep] = useState(0)
+
+	return (
+		<div style={{ padding: "4rem" }}>
+			{step === 0 && <OrderPage setStep={setStep} />}
+			{step === 1 && <SummaryPage setStep={setStep} />}
+			{step === 2 && <CompletePage setStep={setStep} />}
+		</div>
+	);
 }
 
 export default App;
